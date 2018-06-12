@@ -14,12 +14,6 @@ function max(numbers) {
   return currentMax;
 }
 
-
-let array = [0, 4, 6, 8, 9, 10];
-
-console.log(max(array));
-console.log(max([]));
-
 function min(numbers) {
   let currentMin = numbers[0];
   let i = 0;
@@ -32,8 +26,15 @@ function min(numbers) {
   return currentMin;
 }
 
+let array = [0, 4, 6, 8, 9, 10];
+
+console.log(max(array));
+console.log(max([]));
+
 console.log(min(array));
 console.log(min([]));
+
+
 
 //forEach
 
@@ -46,6 +47,8 @@ function average (numbers) {
 }
 
 console.log(average(array));
+
+
 
 //Functions as arguments(1)
 
@@ -66,6 +69,8 @@ function goodbye() {
 console.log(repeat(hello, 5));
 console.log(repeat(goodbye, 5));
 
+
+
 //Functions as arguments(2)
 
 // DO NOT EDIT BETWEEN THESE LINES ----->
@@ -73,45 +78,40 @@ console.log(repeat(goodbye, 5));
 const myNames = ['Rich', 'Joe', 'Bhaumik', 'Ray'];
 
 const filteredNames = filter(myNames, function (name) {
-  // This is a "predicate function" - it's a function that only returns a boolean
+//   // This is a "predicate function" - it's a function that only returns a boolean
   return name[0] === 'R';
 });
 
 console.log(filteredNames); // => ['Rich', 'Ray']
 // <---- DO NOT EDIT BETWEEN THESE LINES
 
-// TASK: DEFINE YOUR FILTER FUNCTION BELOW:
-
 // Create a function called filter, which takes two arguments:
-// First argument is an array: arr
-// Second argument is a function: fn
-// This function exists to return a new array, so create a newArray initialized to[];
-// Now start a loop through the arr passed in
-//   Inside the loop:
-// Write an if statement that checks if invoking the fn function while passing in the current element of arr returns true
-// If it does, then push the current element of arr into our newArray
-// Finally, outside the loop, we return newArray
-// Try calling your filter function using the myNames array above and test that it works
-
-
-
+// an array and a function
 function filter(arr, fn) {
+  //create a newArray initialized to[];
   let newArray = [];
+
+  //start a loop through the arr
   for (let i = 0; i < arr.length; i++) {
+    //check if invoking fn while passing in the current arr element returns true
     if (fn(arr[i]) === true) {
+      //push the element into newArray
       newArray.push(arr[i]);
     }
   }
+  //return newArray
   return newArray;
 }
 
 console.log(filter(myNames, function (name) {
-  // This is a "predicate function" - it's a function that only returns a boolean
   return name[0] === 'R';
 }));
 
-//Can you invoke the filter function and immediately log the result using a single line of code and arrow functions?
+//Invoking the filter function and immediately logging the result using a single line of code and arrow functions
 console.log(filter(myNames, name => name[0] === 'R'));
+
+
+
 
 //Functions as return values
 
@@ -143,51 +143,49 @@ tornadoWarning('Washington Coast');
 floodWarning('Your neighborhood');
 floodWarning('Across the city');
 
+
+
 //forEach, filter and map
 
-// A turtle's movements can be represented by an array which looks like this: [3, 4]. The first item in the array represents the number of steps the turtle takes forwards. The second number in the array is the number of steps the turtle takes to the left.
-// Here is an array of different movements made by a turtle: [[0, 0], [0, 5], [-1, -3], [-3, 1], [2, -4], [3, 2]].
-// Use the filter method to remove any items where the turtle moves backwards or to the right(i.e.where either the first of second number is an item that is negative).
-// Use the map method to create a new array containing how many steps the turtle makes in total with each movement(i.e.the first and second number added together).
-// Use the forEach method to log out how many steps the turtle took in each case.
-
+//Array with turtles moves
 let moves = [[0, 0], [0, 5], [-1, -3], [-3, 1], [2, -4], [3, 2]];
 
+//Filter out items where the turtle moves backwards or to the right(i.e.where either the first of second number is an item that is negative).
 let filteredMoves = moves.filter(arr => {
   if (arr[0] >= 0 && arr[1] >= 0) { return arr;}
 });
 
+//Create a new array containing how many steps the turtle makes in total with each movement(i.e.the first and second number added together)
 let totalStepsMap = moves.map(move => Math.abs(move[0]) + Math.abs(move [1]));
 
+//Log out how many steps the turtle took in each case.
 let totalStepsforEach = totalStepsMap.forEach(num => console.log(num));
 
 console.log(filteredMoves);
 console.log(totalStepsMap);
 
 
-// reduce
 
-/*Use the reduce function to iterate through an array of words and construct a decoded sentence (string) based on the following criteria:
-If the array element is exactly three characters in length, add a space character to your accumulator
-Otherwise, capitalize the LAST character of the array element and add it to your accumulator
-Your input is 'noggin oreo the moon time tele steed his tent apollo her lives though shoo tofu budapest'
-You will need to convert the input to an array before using .reduce()
-HINT: When you invoke reduce() you will need to set the initialValue parameter to an empty string so that future iterations can concatenate more string characters */
+// reduce
 
 let string = 'noggin oreo the moon time tele steed his tent apollo her lives though shoo tofu budapest';
 
+//Convert string to an array
 let stringArray = string.split(' ');
 
 
 let decodedMessage = stringArray.reduce(function(initialValue, word) {
+  //If array element is exactly three chars in length, 
+  //add a space character to accumulator
   if (word.length === 3) {
     return initialValue + ' ';
   }
+  //Otherwise, capitalize the LAST char of array element 
+  //and add it to accumulator
   else {
     return initialValue + word.toUpperCase().slice(-1);
   }
+  //set initialValue to empty string
 }, '');
 
 console.log(decodedMessage);
-
-

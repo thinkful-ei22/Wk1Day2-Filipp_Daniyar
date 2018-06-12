@@ -112,3 +112,33 @@ console.log(filter(myNames, function (name) {
 
 //Can you invoke the filter function and immediately log the result using a single line of code and arrow functions?
 console.log(filter(myNames, name => name[0] === 'R'));
+
+//Functions as return values
+
+function hazardWarningCreator(typeOfWarning) {
+  let warningCounter = 0;
+
+  return function(location) {
+    warningCounter++;
+    console.log(`DANGER! There is a ${typeOfWarning} hazard at ${location}!`)
+    if (warningCounter === 1) {
+      console.log(`The ${typeOfWarning} hazard alert has triggered ${warningCounter} time today!`);
+    }
+    else {
+      console.log(`The ${typeOfWarning} hazard alert has triggered ${warningCounter} times today!`);
+    }
+  };
+}
+
+const rocksWarning = hazardWarningCreator('Rocks on the Road');
+const tornadoWarning = hazardWarningCreator('Tornado coming up');
+const floodWarning = hazardWarningCreator('Flood incoming');
+
+rocksWarning('Main St and Pacific Ave');
+rocksWarning('Centinela Ave and Olympic Blvd');
+
+tornadoWarning('Mainview Beach');
+tornadoWarning('Washington Coast');
+
+floodWarning('Your neighborhood');
+floodWarning('Across the city');

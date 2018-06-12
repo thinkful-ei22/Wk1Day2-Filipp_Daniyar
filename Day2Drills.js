@@ -18,6 +18,7 @@ function max(numbers) {
 let array = [0, 4, 6, 8, 9, 10];
 
 console.log(max(array));
+console.log(max([]));
 
 function min(numbers) {
   let currentMin = numbers[0];
@@ -32,3 +33,16 @@ function min(numbers) {
 }
 
 console.log(min(array));
+console.log(min([]));
+
+//forEach
+
+function average (numbers) {
+  let sum = 0;
+  numbers.forEach(function(num){
+    sum+=num;
+  });
+  return sum / numbers.length;
+}
+
+console.log(average(array));

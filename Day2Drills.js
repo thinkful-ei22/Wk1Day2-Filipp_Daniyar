@@ -65,3 +65,50 @@ function goodbye() {
 
 console.log(repeat(hello, 5));
 console.log(repeat(goodbye, 5));
+
+//Functions as arguments(2)
+
+// DO NOT EDIT BETWEEN THESE LINES ----->
+// Return only names that begin with 'R'
+const myNames = ['Rich', 'Joe', 'Bhaumik', 'Ray'];
+
+const filteredNames = filter(myNames, function (name) {
+  // This is a "predicate function" - it's a function that only returns a boolean
+  return name[0] === 'R';
+});
+
+console.log(filteredNames) // => ['Rich', 'Ray']
+// <---- DO NOT EDIT BETWEEN THESE LINES
+
+// TASK: DEFINE YOUR FILTER FUNCTION BELOW:
+
+// Create a function called filter, which takes two arguments:
+// First argument is an array: arr
+// Second argument is a function: fn
+// This function exists to return a new array, so create a newArray initialized to[];
+// Now start a loop through the arr passed in
+//   Inside the loop:
+// Write an if statement that checks if invoking the fn function while passing in the current element of arr returns true
+// If it does, then push the current element of arr into our newArray
+// Finally, outside the loop, we return newArray
+// Try calling your filter function using the myNames array above and test that it works
+
+
+
+function filter(arr, fn) {
+  let newArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (fn(arr[i]) === true) {
+      newArray.push(arr[i]);
+    }
+  }
+  return newArray;
+}
+
+console.log(filter(myNames, function (name) {
+  // This is a "predicate function" - it's a function that only returns a boolean
+  return name[0] === 'R';
+}));
+
+//Can you invoke the filter function and immediately log the result using a single line of code and arrow functions?
+console.log(filter(myNames, name => name[0] === 'R'));
